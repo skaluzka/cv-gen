@@ -1,0 +1,60 @@
+@page {
+  size: a4 portrait;
+  margin: 10mm 15mm 15mm 10mm;
+  counter-increment: page;
+  background-color: #000000;
+
+  @bottom-left {
+    content: '9ENERA7ED: __GENERATED__';
+    white-space: pre;
+    color: #00ff00;
+    /* border-top: 0.4pt solid #00ff00; */
+    padding-top: 0px;
+    margin-top: 0px;
+    font-size: 8pt;
+    font-family: Inconsolata;
+  }
+
+  @bottom-right {
+    content: '[smith@matr1x ~/D0cs/CVE/PA9E_0x0' counter(page) '_of_0x0' counter(pages) ']$ ▇';
+    white-space: pre;
+    color: #00ff00;
+    font-size: 8pt;
+    font-family: Inconsolata;
+  }
+}
+
+body {
+  font-size: 0.8em;
+  font-family: Inconsolata;
+  color: #00ff00; /* font color for the whole body */
+  background-color: #000000;
+}
+
+p {
+  font-size: 1em;
+  color: #00ff00; /* font color for paragraph only */
+}
+
+h2 {
+  color: #00ff00;
+  font-family: Inconsolata;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+h4 {
+  color: #00ff00;
+  font-family: Inconsolata;
+  font-size: 8pt;
+  font-weight: normal;
+}
+
+code {
+  font-family: Inconsolata;
+  font-size: 10pt;
+  color: #00ff00;
+}
+
+
+/* The end */

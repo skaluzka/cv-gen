@@ -1,0 +1,11 @@
+# At first update pip3 (before updating setuptools/easy_install)
+pip==20.0.2
+
+# Then update setuptools/easy_install
+setuptools==46.1.3
+
+# At the end install weasyprint package
+weasyprint==51
+
+
+# The end

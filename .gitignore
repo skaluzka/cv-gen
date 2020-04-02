@@ -1,0 +1,17 @@
+# Python3 virtual environment directory
+.venv/
+
+# Output directory
+build/
+
+# Examples directory
+examples/
+
+# The local pandoc directory
+pandoc-*
+
+# Symlink pointing to above directory
+pandoc
+
+
+# The end
