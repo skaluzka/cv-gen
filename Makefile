@@ -14,7 +14,7 @@ ALL_INPUT_FILES := $(wildcard $(INPUT_DIR)/*/cv.md)
 
 # Output files and directories
 OUTPUT_DIR_PDF := $(WORK_DIR)/build/pdf
-ALL_OUTPUT_FILES_PDF := $(patsubst $(INPUT_DIR)/%,$(notdir $(OUTPUT_DIR_PDF)/%.pdf),$(ALL_INPUT_DIRS))
+ALL_OUTPUT_FILES_PDF := $(patsubst $(INPUT_DIR)/%,$(notdir $(OUTPUT_DIR_PDF)/%_CV.pdf),$(ALL_INPUT_DIRS))
 
 # The pandoc binary
 PANDOC_BIN := $(WORK_DIR)/pandoc/bin/pandoc
@@ -64,7 +64,7 @@ $(foreach f,$(ALL_OUTPUT_FILES_PDF),$(eval $(call RULE_template,$(f),$(OUTPUT_DI
 # https://www.gnu.org/software/make/manual/html_node/Eval-Function.html
 
 
-$(OUTPUT_DIR_PDF)/%.pdf: $(INPUT_DIR)/%/cv.md $(INPUT_DIR)/%/style.css
+$(OUTPUT_DIR_PDF)/%_CV.pdf: $(INPUT_DIR)/%/cv.md $(INPUT_DIR)/%/style.css
 	$(Q)mkdir -p $(OUTPUT_DIR_PDF)
 	$(Q)echo "Generating $@ file..."
 	$(Q)cp $(dir $<)/style.css $(dir $<)/tmp.style.css

@@ -136,9 +136,9 @@ in/
 
 1 directory, 5 files
 $
-$ time make Agent_Smith.pdf
-Generating /tmp/cv-gen/build/pdf/Agent_Smith.pdf file...
-File /tmp/cv-gen/build/pdf/Agent_Smith.pdf generated succesfully.
+$ time make Agent_Smith_CV.pdf
+Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
+File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 
 real	0m1.039s
 user	0m0.891s
@@ -147,17 +147,17 @@ $
 $ tree -apugsF build/
 build/
 └── [drwxr-xr-x user user          60]  pdf/
-    └── [-rw-r--r-- user user       64212]  Agent_Smith.pdf
+    └── [-rw-r--r-- user user       64212]  Agent_Smith_CV.pdf
 
 1 directory, 1 file
 $ 
 ```
 
-The result **`pdf`** file will be saved to **`build/pdf/Agent_Smith.pdf`**
+The result **`pdf`** file will be saved to **`build/pdf/Agent_Smith_CV.pdf`**
 path.  
 For comparison purposes it has been added also to
 **`examples/results/build/pdf/`** directory:
-[examples/results/build/pdf/Agent_Smith.pdf](examples/results/build/pdf/Agent_Smith.pdf)
+[examples/results/build/pdf/Agent_Smith_CV.pdf](examples/results/build/pdf/Agent_Smith_CV.pdf)
 
 
 # Cust0M inpUT dA7A
@@ -218,12 +218,12 @@ $ make clean
 [INFO]: Removing /tmp/cv-gen/build/pdf directory...
 [INFO]: Done
 $
-$ make Agent_Smith.pdf
-Generating /tmp/cv-gen/build/pdf/Agent_Smith.pdf file...
-File /tmp/cv-gen/build/pdf/Agent_Smith.pdf generated succesfully.
+$ make Agent_Smith_CV.pdf
+Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
+File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 $
-$ make Agent_Smith.pdf
-make: Nothing to be done for 'Agent_Smith.pdf'.
+$ make Agent_Smith_CV.pdf
+make: Nothing to be done for 'Agent_Smith_CV.pdf'.
 $
 ```
 
@@ -232,9 +232,9 @@ $
 ```
 $ touch in/Agent_Smith/cv.md
 $
-$ make Agent_Smith.pdf
-Generating /tmp/cv-gen/build/pdf/Agent_Smith.pdf file...
-File /tmp/cv-gen/build/pdf/Agent_Smith.pdf generated succesfully.
+$ make Agent_Smith_CV.pdf
+Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
+File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 $
 ```
 
@@ -243,9 +243,9 @@ $
 ```
 $ touch in/Agent_Smith/style.css
 $
-$ make Agent_Smith.pdf
-Generating /tmp/cv-gen/build/pdf/Agent_Smith.pdf file...
-File /tmp/cv-gen/build/pdf/Agent_Smith.pdf generated succesfully.
+$ make Agent_Smith_CV.pdf
+Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
+File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 $
 ```
 
@@ -255,15 +255,15 @@ $ make clean
 [INFO]: Removing /tmp/cv-gen/build/pdf directory...
 [INFO]: Done
 $
-$ make Agent_Smith.pdf
-Generating /tmp/cv-gen/build/pdf/Agent_Smith.pdf file...
-File /tmp/cv-gen/build/pdf/Agent_Smith.pdf generated succesfully.
+$ make Agent_Smith_CV.pdf
+Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
+File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 $
-$ make Agent_Smith.pdf
-make: Nothing to be done for 'Agent_Smith.pdf'.
+$ make Agent_Smith_CV.pdf
+make: Nothing to be done for 'Agent_Smith_CV.pdf'.
 $
-$ make $(pwd)/build/pdf/Agent_Smith.pdf
-make: '/tmp/cv-gen/build/pdf/Agent_Smith.pdf' is up to date.
+$ make $(pwd)/build/pdf/Agent_Smith_CV.pdf
+make: '/tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf' is up to date.
 $ 
 ```
 
