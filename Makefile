@@ -59,6 +59,7 @@ endef
 
 # Kinda magic 2/3
 $(foreach f,$(ALL_OUTPUT_FILES_PDF),$(eval $(call RULE_template,$(f),$(OUTPUT_DIR_PDF)/$(f))))
+$(foreach d,$(ALL_INPUT_DIRS),$(eval $(call RULE_template,$(notdir $(d)),$(OUTPUT_DIR_PDF)/$(notdir $(d))_CV.pdf)))
 
 # Kinda magic 3/3
 # https://www.gnu.org/software/make/manual/html_node/Eval-Function.html

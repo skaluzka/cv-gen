@@ -136,7 +136,7 @@ in/
 
 1 directory, 5 files
 $
-$ time make Agent_Smith_CV.pdf
+$ time make Agent_Smith
 Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
 File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 
@@ -183,15 +183,15 @@ tool during **`md -> pdf`** conversion. Its content can be freely changed
 and customized, but it has to be strictly named **`style.css`** (see the
 content of **`Makefile`** file). Any other names are not supported currently.
 
-Such prepared custom input data directory has to be copied into **`in/`**
+Such prepared custom input data directory has to be placed into **`in/`**
 directory before building.
 
-Below command will generate **`build/pdf/FirstName_LastName_CV.pdf `** result file
-for structure described above:
+Below command will generate **`build/pdf/FirstName_LastName_CV.pdf `** result
+file for structure described above:
 
 ```
 $ cd cv-gen
-$ make FirstName_LastName_CV.pdf
+$ make FirstName_LastName
 Generating /tmp/cv-gen/build/pdf/FirstName_LastName_CV.pdf file...
 File /tmp/cv-gen/build/pdf/FirstName_LastName_CV.pdf generated succesfully.
 $
@@ -218,12 +218,12 @@ $ make clean
 [INFO]: Removing /tmp/cv-gen/build/pdf directory...
 [INFO]: Done
 $
-$ make Agent_Smith_CV.pdf
+$ make Agent_Smith
 Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
 File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 $
-$ make Agent_Smith_CV.pdf
-make: Nothing to be done for 'Agent_Smith_CV.pdf'.
+$ make Agent_Smith
+make: Nothing to be done for 'Agent_Smith'.
 $
 ```
 
@@ -232,7 +232,7 @@ $
 ```
 $ touch in/Agent_Smith/cv.md
 $
-$ make Agent_Smith_CV.pdf
+$ make Agent_Smith
 Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
 File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 $
@@ -243,7 +243,7 @@ $
 ```
 $ touch in/Agent_Smith/style.css
 $
-$ make Agent_Smith_CV.pdf
+$ make Agent_Smith
 Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
 File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 $
@@ -255,12 +255,12 @@ $ make clean
 [INFO]: Removing /tmp/cv-gen/build/pdf directory...
 [INFO]: Done
 $
-$ make Agent_Smith_CV.pdf
+$ make Agent_Smith
 Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
 File /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf generated succesfully.
 $
-$ make Agent_Smith_CV.pdf
-make: Nothing to be done for 'Agent_Smith_CV.pdf'.
+$ make Agent_Smith
+make: Nothing to be done for 'Agent_Smith'.
 $
 $ make $(pwd)/build/pdf/Agent_Smith_CV.pdf
 make: '/tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf' is up to date.
