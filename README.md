@@ -357,6 +357,3 @@ All sources are published below:
 - agentsmith1.png -> https://screencrush.com/files/2012/10/Agent-Smith1.jpg
 - agentsmith2.png -> http://3.bp.blogspot.com/-wqlx--azZGg/UrW4fSDO73I/AAAAAAAAA0E/o5DlLg8IFNI/s1600/AgentSmith.jpeg
 - agentsmith3.png -> https://mymistakesweremade4u.files.wordpress.com/2014/04/agent_smith.jpg
-
-**Terminator:**
-- terminator.png -> https://cdn2.highdefdigest.com/media/2017/06/26/660/terminator_genisys_5.png
