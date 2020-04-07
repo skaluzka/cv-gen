@@ -7,8 +7,8 @@
 ```
                 m0bile   --   +00 110 110 110
                 e-mail   --   agent.smith+job@matr1x.com
-         github/gitlab   --   agentsmith / agentsmith
-            twitter/fb   --   smith / agent.smith
+       github / gitlab   --   agentsmith / agentsmith
+          twitter / fb   --   smith / agent.smith
                    irc   --   ???
            Nationality   --   AI
   
@@ -94,7 +94,7 @@ education and training
        Web DeVeL0Pmen7   --   Yes, everything except js
               ML && AI   --   Matrix with its entire environment && ecosystem
                    VCS   --   All version control systems on the world
-                 CI/CD   --   All continuous integration, continuous delivery and continuous
+               CI / CD   --   All continuous integration, continuous delivery and continuous
                               deployment systems on the world
                  CL0ud   --   All cloud platforms on the whorld
         VirtUaL!Zati0n   --   All virtualization technologies on the world
@@ -108,7 +108,7 @@ education and training
                     HW   --   All type of servers, routers, switches, fiber-optic patch cords,
                               ethernet cables and other physical computer devices including
                               retrocomputers with peripherals
-  Embedded/I0T dev!ces   --   0nly Zil0g Z80
+Embedded / I0T dev!ces   --   0nly Zil0g Z80
   
 
 ```
