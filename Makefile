@@ -1,5 +1,6 @@
-# This file is part of cv-gen tool.
+# This file is a main part of cv-gen tool.
 # Do not change it unless you know what you are doing.
+
 
 # Main working directory
 WORK_DIR := $(CURDIR)
@@ -21,7 +22,7 @@ PANDOC_BIN := $(WORK_DIR)/pandoc/bin/pandoc
 
 # Other pandoc variables needed for md -> pdf conversion
 PANDOC_PDF_ENGINE := weasyprint
-PANDOC_PDF_PARAMS := --pdf-engine=weasyprint --quiet
+PANDOC_PDF_PARAMS := --pdf-engine=weasyprint
 
 # Handling cli param VERBOSE=1
 ifeq ($(VERBOSE), 1)
@@ -74,6 +75,7 @@ $(OUTPUT_DIR_PDF)/%_CV.pdf: $(INPUT_DIR)/%/cv.md $(INPUT_DIR)/%/style.css
 		cd $(dir $<) && \
 		$(PANDOC_BIN) \
 		$(PANDOC_PDF_PARAMS) \
+		--metadata pagetitle=$(notdir $@) \
 		--css $(dir $<)/tmp.style.css \
 		$< \
 		-o $@
