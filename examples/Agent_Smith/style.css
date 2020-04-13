@@ -5,7 +5,7 @@
   background-color: #000000;
 
   @bottom-left {
-    content: '9ENERA7ED: __GENERATED__';
+    content: '9ENERA7ED: __GENERATED__ by cv-gen-__CV_GEN_VER__';
     white-space: pre;
     color: #00ff00;
     /* border-top: 0.4pt solid #00ff00; */

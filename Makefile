@@ -5,6 +5,9 @@
 # Main working directory
 WORK_DIR := $(CURDIR)
 
+# Include version file
+include $(WORK_DIR)/version.cfg
+
 # Python3 virtual environment dir for weasyprint package
 VENV_DIR := $(WORK_DIR)/.venv
 
@@ -53,16 +56,18 @@ endif
 .DEFAULT_GOAL := help
 
 
-# Kinda magic 1/3
+# Kinda magic 1/4
 define RULE_template =
   $(1): $(2)
 endef
 
-# Kinda magic 2/3
+# Kinda magic 2/4
 $(foreach f,$(ALL_OUTPUT_FILES_PDF),$(eval $(call RULE_template,$(f),$(OUTPUT_DIR_PDF)/$(f))))
+
+# Kinda magic 3/4
 $(foreach d,$(ALL_INPUT_DIRS),$(eval $(call RULE_template,$(notdir $(d)),$(OUTPUT_DIR_PDF)/$(notdir $(d))_CV.pdf)))
 
-# Kinda magic 3/3
+# Kinda magic 4/4
 # https://www.gnu.org/software/make/manual/html_node/Eval-Function.html
 
 
@@ -71,6 +76,7 @@ $(OUTPUT_DIR_PDF)/%_CV.pdf: $(INPUT_DIR)/%/cv.md $(INPUT_DIR)/%/style.css
 	$(Q)echo "Generating $@ file..."
 	$(Q)cp $(dir $<)/style.css $(dir $<)/tmp.style.css
 	$(Q)sed "s%__GENERATED__%`date --iso-8601=s`%g" -i $(dir $<)/tmp.style.css
+	$(Q)sed "s%__CV_GEN_VER__%$(__CV_GEN_VERSION)%g" -i $(dir $<)/tmp.style.css
 	$(Q)source $(VENV_DIR)/bin/activate && \
 		cd $(dir $<) && \
 		$(PANDOC_BIN) \
@@ -94,20 +100,31 @@ clean:
 	$(Q)echo "[INFO]: Done"
 
 
-.PHONY: help
-help:
+.PHNOY: version
+version:
 	@echo ""
-	@echo "This is the top-level Makefile of cv-gen tool."
+	@echo "cv-gen $(__CV_GEN_VERSION)"
+	@echo ""
+
+
+.PHONY: help
+help: version
+	@echo "The simple CV generator and md -> pdf converter."
 	@echo ""
 	@echo "Usage:"
+	@echo "    make               - Build the default target help (see "
+	@echo "                         below).                            "
 	@echo ""
-	@echo "    make               - The default target (see below) "
+	@echo "    make all           - Build all (convert all in/*/cv.md  "
+	@echo "                         files to build/pdf/*_CV.pdf).         "
 	@echo ""
-	@echo "    make all           - Build all                      "
+	@echo "    make clean         - Remove all output files (clean the "
+	@echo "                         output build/pdf/ directory).      "
 	@echo ""
-	@echo "    make clean         - Remove all output dirs         "
+	@echo "    make help          - Print this help message and exit.  "
 	@echo ""
-	@echo "    make help          - Print this help message        "
+	@echo "Extra options:"
+	@echo "    VERBOSE=1          - Increase verbosity.                "
 	@echo ""
 
 

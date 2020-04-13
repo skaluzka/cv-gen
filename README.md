@@ -95,18 +95,24 @@ $
 $ cd cv-gen
 $ make
 
-This is the top-level Makefile of cv-gen tool.
+cv-gen master
+
+The simple CV generator and md -> pdf converter.
 
 Usage:
+    make               - Build the default target help (see 
+                         below).                            
 
-    make               - The default target (see below) 
+    make all           - Build all (convert all in/*/cv.md  
+                         files to build/pdf/*_CV.pdf).      
 
-    make all           - Build all                      
+    make clean         - Remove all output files (clean the 
+                         output build/pdf/ directory).      
 
-    make clean         - Remove all output dirs         
+    make help          - Print this help message and exit.  
 
-    make help          - Print this help message        
-
+Extra options:
+    VERBOSE=1          - Increase verbosity.                
 $
 ```
 
@@ -181,7 +187,8 @@ supported currently.
 - **`style.css`** - Mandatory CSS style file. It will be used by **`pandoc`**
 tool during **`md -> pdf`** conversion. Its content can be freely changed
 and customized, but it has to be strictly named **`style.css`** (see the
-content of **`Makefile`** file). Any other names are not supported currently.
+content of **`Makefile`** file for more details). Any other names are not
+supported currently.
 
 Such prepared custom input data directory has to be placed into **`in/`**
 directory before building.
@@ -339,7 +346,7 @@ $
 
 # C0ntrib
 
-All pull requests are welcome! ;)
+The pull requests are welcome! :)
 
 
 # C0py!N9
