@@ -27,9 +27,14 @@ PANDOC_BIN := $(WORK_DIR)/pandoc/bin/pandoc
 PANDOC_PDF_ENGINE := weasyprint
 PANDOC_PDF_PARAMS := --pdf-engine=weasyprint
 
-# Handling cli param VERBOSE=1
-ifeq ($(VERBOSE), 1)
-  Q=
+# Handling VERBOSE cli param
+ifndef VERBOSE
+  VERBOSE = 0
+endif
+ifeq ($(VERBOSE), 0)
+  _v = @
+else ifeq ($(VERBOSE), 1)
+  _v =
 
   # Print some general variables
   $(info WORK_DIR = $(WORK_DIR))
@@ -49,7 +54,7 @@ ifeq ($(VERBOSE), 1)
   $(info OUTPUT_DIR_PDF = $(OUTPUT_DIR_PDF))
   $(info ALL_OUTPUT_FILES_PDF = $(ALL_OUTPUT_FILES_PDF))
 else
-  Q=@
+  $(error [ERROR]: Wrong value for VERBOSE parameter (VERBOSE = $(VERBOSE)). Allowed values: 0, 1 only)
 endif
 
 
@@ -72,12 +77,12 @@ $(foreach d,$(ALL_INPUT_DIRS),$(eval $(call RULE_template,$(notdir $(d)),$(OUTPU
 
 
 $(OUTPUT_DIR_PDF)/%_CV.pdf: $(INPUT_DIR)/%/cv.md $(INPUT_DIR)/%/style.css
-	$(Q)mkdir -p $(OUTPUT_DIR_PDF)
-	$(Q)echo "Generating $@ file..."
-	$(Q)cp $(dir $<)/style.css $(dir $<)/tmp.style.css
-	$(Q)sed "s%__GENERATED__%`date --iso-8601=s`%g" -i $(dir $<)/tmp.style.css
-	$(Q)sed "s%__CV_GEN_VER__%$(__CV_GEN_VERSION)%g" -i $(dir $<)/tmp.style.css
-	$(Q)source $(VENV_DIR)/bin/activate && \
+	$(_v)mkdir -p $(OUTPUT_DIR_PDF)
+	$(_v)echo "Generating $@ file..."
+	$(_v)cp $(dir $<)/style.css $(dir $<)/tmp.style.css
+	$(_v)sed "s%__GENERATED__%`date --iso-8601=s`%g" -i $(dir $<)/tmp.style.css
+	$(_v)sed "s%__CV_GEN_VER__%$(__CV_GEN_VERSION)%g" -i $(dir $<)/tmp.style.css
+	$(_v)source $(VENV_DIR)/bin/activate && \
 		cd $(dir $<) && \
 		$(PANDOC_BIN) \
 		$(PANDOC_PDF_PARAMS) \
@@ -85,8 +90,8 @@ $(OUTPUT_DIR_PDF)/%_CV.pdf: $(INPUT_DIR)/%/cv.md $(INPUT_DIR)/%/style.css
 		--css $(dir $<)/tmp.style.css \
 		$< \
 		-o $@
-	$(Q)rm $(dir $<)/tmp.style.css
-	$(Q)echo "File $@ generated succesfully."
+	$(_v)rm $(dir $<)/tmp.style.css
+	$(_v)echo "File $@ generated succesfully."
 
 
 .PHONY: all
@@ -95,9 +100,9 @@ all: $(ALL_OUTPUT_FILES_PDF)
 
 .PHONY: clean
 clean:
-	$(Q)echo "[INFO]: Removing $(OUTPUT_DIR_PDF) directory..."
-	$(Q)-rm -rf $(OUTPUT_DIR_PDF)
-	$(Q)echo "[INFO]: Done"
+	$(_v)echo "[INFO]: Removing $(OUTPUT_DIR_PDF) directory..."
+	$(_v)-rm -rf $(OUTPUT_DIR_PDF)
+	$(_v)echo "[INFO]: Done"
 
 
 .PHNOY: version
@@ -116,7 +121,7 @@ help: version
 	@echo "                         below).                            "
 	@echo ""
 	@echo "    make all           - Build all (convert all in/*/cv.md  "
-	@echo "                         files to build/pdf/*_CV.pdf).         "
+	@echo "                         files to build/pdf/*_CV.pdf).      "
 	@echo ""
 	@echo "    make clean         - Remove all output files (clean the "
 	@echo "                         output build/pdf/ directory).      "
