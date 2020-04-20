@@ -96,7 +96,7 @@ github / gitlab / bitbucket   --   agentsmith / agentsmith / agentsmith
                         VCS   --   All version control systems on the world
                     CI / CD   --   All continuous integration, continuous delivery && continuous
                                    deployment systems on the world
-                      CL0ud   --   All cloud platforms on the whorld
+                      CL0ud   --   All cloud platforms on the world
              VirtUaL!Zati0n   --   All virtualization technologies on the world
                  C0nta!ners   --   All containerization technologies on the world except docker
                    NetW0rks   --   All kind of network protocols on the world
