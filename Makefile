@@ -2,32 +2,32 @@
 # Do not change it unless you know what you are doing.
 
 
-# Main working directory
+# The cv-gen tool working directory.
 WORK_DIR := $(CURDIR)
 
-# Include version file
+# Include version file.
 include $(WORK_DIR)/version.cfg
 
-# Python3 virtual environment dir for weasyprint package
+# Python3 virtual environment dir for weasyprint package.
 VENV_DIR := $(WORK_DIR)/.venv
 
-# Input files and directories
+# Computed input files and directories.
 INPUT_DIR := $(WORK_DIR)/in
 ALL_INPUT_DIRS := $(wildcard $(INPUT_DIR)/*)
 ALL_INPUT_FILES := $(wildcard $(INPUT_DIR)/*/cv.md)
 
-# Output files and directories
+# Computed output files and directories.
 OUTPUT_DIR_PDF := $(WORK_DIR)/build/pdf
 ALL_OUTPUT_FILES_PDF := $(patsubst $(INPUT_DIR)/%,$(notdir $(OUTPUT_DIR_PDF)/%_CV.pdf),$(ALL_INPUT_DIRS))
 
-# The pandoc binary
+# An absolute pandoc binary path.
 PANDOC_BIN := $(WORK_DIR)/pandoc/bin/pandoc
 
-# Other pandoc variables needed for md -> pdf conversion
+# Other pandoc options needed for md -> pdf conversion.
 PANDOC_PDF_ENGINE := weasyprint
 PANDOC_PDF_PARAMS := --pdf-engine=weasyprint
 
-# Handling VERBOSE cli param
+# Handling VERBOSE cli param.
 ifndef VERBOSE
   VERBOSE = 0
 endif
@@ -36,21 +36,21 @@ ifeq ($(VERBOSE), 0)
 else ifeq ($(VERBOSE), 1)
   _v =
 
-  # Print some general variables
+  # Print some general variables.
   $(info WORK_DIR = $(WORK_DIR))
   $(info VENV_DIR = $(VENV_DIR))
 
-  # Print all pandoc variables used while md -> pdf conversion
+  # Print all pandoc variables used while md -> pdf conversion.
   $(info PANDOC_BIN = $(PANDOC_BIN))
   $(info PANDOC_PDF_ENGINE = $(PANDOC_PDF_ENGINE))
   $(info PANDOC_PDF_PARAMS = $(PANDOC_PDF_PARAMS))
 
-  # Print all variables related to input files and dirs
+  # Print all computed input files and dirs.
   $(info INPUT_DIR = $(INPUT_DIR))
   $(info ALL_INPUT_DIRS = $(ALL_INPUT_DIRS))
   $(info ALL_INPUT_FILES = $(ALL_INPUT_FILES))
 
-  # Print all variables related to output pdf files
+  # Print all computed output files and dirs.
   $(info OUTPUT_DIR_PDF = $(OUTPUT_DIR_PDF))
   $(info ALL_OUTPUT_FILES_PDF = $(ALL_OUTPUT_FILES_PDF))
 else
@@ -61,21 +61,22 @@ endif
 .DEFAULT_GOAL := help
 
 
-# Kinda magic 1/4
+# Kinda magic (1/4).
 define RULE_template =
   $(1): $(2)
 endef
 
-# Kinda magic 2/4
+# Kinda magic (2/4).
 $(foreach f,$(ALL_OUTPUT_FILES_PDF),$(eval $(call RULE_template,$(f),$(OUTPUT_DIR_PDF)/$(f))))
 
-# Kinda magic 3/4
+# Kinda magic (3/4).
 $(foreach d,$(ALL_INPUT_DIRS),$(eval $(call RULE_template,$(notdir $(d)),$(OUTPUT_DIR_PDF)/$(notdir $(d))_CV.pdf)))
 
-# Kinda magic 4/4
+# Kinda magic (4/4).
 # https://www.gnu.org/software/make/manual/html_node/Eval-Function.html
 
 
+# Generic rule used for md -> pdf conversion.
 $(OUTPUT_DIR_PDF)/%_CV.pdf: $(INPUT_DIR)/%/cv.md $(INPUT_DIR)/%/style.css
 	$(_v)mkdir -p $(OUTPUT_DIR_PDF)
 	$(_v)echo "Generating $@ file..."
