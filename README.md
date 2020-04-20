@@ -85,7 +85,7 @@ removed 'pandoc-2.9.2.1-linux-amd64.tar.gz'
 real	0m42.570s
 user	0m11.470s
 sys	0m1.508s
-$ 
+$
 ```
 
 
@@ -130,7 +130,7 @@ $ cp -vr examples/Agent_Smith/ in/
 'examples/Agent_Smith/agentsmith3.png' -> 'in/Agent_Smith/agentsmith3.png'
 'examples/Agent_Smith/cv.md' -> 'in/Agent_Smith/cv.md'
 'examples/Agent_Smith/style.css' -> 'in/Agent_Smith/style.css'
-$ 
+$
 $ tree in/
 in/
 └── Agent_Smith
@@ -156,7 +156,7 @@ build/
     └── [-rw-r--r-- user user       64212]  Agent_Smith_CV.pdf
 
 1 directory, 1 file
-$ 
+$
 ```
 
 The result **`pdf`** file will be saved to **`build/pdf/Agent_Smith_CV.pdf`**
@@ -193,7 +193,7 @@ supported currently.
 Such prepared custom input data directory has to be placed into **`in/`**
 directory before building.
 
-Below command will generate **`build/pdf/FirstName_LastName_CV.pdf `** result
+Below command will generate **`build/pdf/FirstName_LastName_CV.pdf`** result
 file for structure described above:
 
 ```
@@ -271,7 +271,7 @@ make: Nothing to be done for 'Agent_Smith'.
 $
 $ make $(pwd)/build/pdf/Agent_Smith_CV.pdf
 make: '/tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf' is up to date.
-$ 
+$
 ```
 
 # ParaLLeL execut!0N
