@@ -27,15 +27,33 @@ PANDOC_BIN := $(WORK_DIR)/pandoc/bin/pandoc
 PANDOC_PDF_ENGINE := weasyprint
 PANDOC_PDF_PARAMS := --pdf-engine=weasyprint
 
+# Handling DEBUG cli param.
+ifndef DEBUG
+  DEBUG = 0
+endif
+ifeq ($(DEBUG), 0)
+  _d = @
+else ifeq ($(DEBUG), 1)
+  _d =
+else
+  $(error [ERROR]: Wrong value for DEBUG parameter (DEBUG = $(DEBUG)). Allowed values: 0 or 1 only)
+endif
+
 # Handling VERBOSE cli param.
 ifndef VERBOSE
   VERBOSE = 0
 endif
 ifeq ($(VERBOSE), 0)
-  _v = @
-else ifeq ($(VERBOSE), 1)
-  _v =
 
+else ifeq ($(VERBOSE), 1)
+
+else
+  $(error [ERROR]: Wrong value for VERBOSE parameter (VERBOSE = $(VERBOSE)). Allowed values: 0, 1 only)
+endif
+
+
+# If VERBOSE=1 then print some extra information.
+ifeq ($(VERBOSE), 1)
   # Print some general variables.
   $(info WORK_DIR = $(WORK_DIR))
   $(info VENV_DIR = $(VENV_DIR))
@@ -53,8 +71,6 @@ else ifeq ($(VERBOSE), 1)
   # Print all computed output files and dirs.
   $(info OUTPUT_DIR_PDF = $(OUTPUT_DIR_PDF))
   $(info ALL_OUTPUT_FILES_PDF = $(ALL_OUTPUT_FILES_PDF))
-else
-  $(error [ERROR]: Wrong value for VERBOSE parameter (VERBOSE = $(VERBOSE)). Allowed values: 0, 1 only)
 endif
 
 
@@ -78,12 +94,12 @@ $(foreach d,$(ALL_INPUT_DIRS),$(eval $(call RULE_template,$(notdir $(d)),$(OUTPU
 
 # Generic rule used for md -> pdf conversion.
 $(OUTPUT_DIR_PDF)/%_CV.pdf: $(INPUT_DIR)/%/cv.md $(INPUT_DIR)/%/style.css
-	$(_v)mkdir -p $(OUTPUT_DIR_PDF)
-	$(_v)echo "Generating $@ file..."
-	$(_v)cp $(dir $<)/style.css $(dir $<)/tmp.style.css
-	$(_v)sed "s%__GENERATED__%`date --iso-8601=s`%g" -i $(dir $<)/tmp.style.css
-	$(_v)sed "s%__CV_GEN_VER__%$(__CV_GEN_VERSION)%g" -i $(dir $<)/tmp.style.css
-	$(_v)source $(VENV_DIR)/bin/activate && \
+	$(_d)mkdir -p $(OUTPUT_DIR_PDF)
+	$(_d)echo "Generating $@ file..."
+	$(_d)cp $(dir $<)/style.css $(dir $<)/tmp.style.css
+	$(_d)sed "s%__GENERATED__%`date --iso-8601=s`%g" -i $(dir $<)/tmp.style.css
+	$(_d)sed "s%__CV_GEN_VER__%$(__CV_GEN_VERSION)%g" -i $(dir $<)/tmp.style.css
+	$(_d)source $(VENV_DIR)/bin/activate && \
 		cd $(dir $<) && \
 		$(PANDOC_BIN) \
 		$(PANDOC_PDF_PARAMS) \
@@ -91,8 +107,8 @@ $(OUTPUT_DIR_PDF)/%_CV.pdf: $(INPUT_DIR)/%/cv.md $(INPUT_DIR)/%/style.css
 		--css $(dir $<)/tmp.style.css \
 		$< \
 		-o $@
-	$(_v)rm $(dir $<)/tmp.style.css
-	$(_v)echo "File $@ generated succesfully."
+	$(_d)rm $(dir $<)/tmp.style.css
+	$(_d)echo "File $@ generated succesfully."
 
 
 .PHONY: all
@@ -101,9 +117,9 @@ all: $(ALL_OUTPUT_FILES_PDF)
 
 .PHONY: clean
 clean:
-	$(_v)echo "[INFO]: Removing $(OUTPUT_DIR_PDF) directory..."
-	$(_v)-rm -rf $(OUTPUT_DIR_PDF)
-	$(_v)echo "[INFO]: Done"
+	$(_d)echo "Removing $(OUTPUT_DIR_PDF) directory..."
+	$(_d)-rm -rf $(OUTPUT_DIR_PDF)
+	$(_d)echo "Done"
 
 
 .PHNOY: version
@@ -130,7 +146,8 @@ help: version
 	@echo "    make help          - Print this help message and exit.  "
 	@echo ""
 	@echo "Extra options:"
-	@echo "    VERBOSE=1          - Increase verbosity.                "
+	@echo "    VERBOSE=1          - Print additional info.             "
+	@echo "    DEBUG=1            - Print most executed commands.      "
 	@echo ""
 
 

@@ -1,7 +1,7 @@
 # Ab0ut
 
 Welcome to **`cv-gen`** project - the simple CV generator and **`md`** -> **`pdf`** converter.  
-Have fun.
+Have fun! :)
 
 
 # INstallati0n
@@ -112,7 +112,8 @@ Usage:
     make help          - Print this help message and exit.  
 
 Extra options:
-    VERBOSE=1          - Increase verbosity.                
+    VERBOSE=1          - Print additional info.             
+    DEBUG=1            - Print most executed commands.      
 $
 ```
 
@@ -222,8 +223,8 @@ $
 
 ```
 $ make clean
-[INFO]: Removing /tmp/cv-gen/build/pdf directory...
-[INFO]: Done
+Removing /tmp/cv-gen/build/pdf directory...
+Done
 $
 $ make Agent_Smith
 Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
@@ -259,8 +260,8 @@ $
 ## Track!N9 depENDencies - test scenaRio 4
 ```
 $ make clean
-[INFO]: Removing /tmp/cv-gen/build/pdf directory...
-[INFO]: Done
+Removing /tmp/cv-gen/build/pdf directory...
+Done
 $
 $ make Agent_Smith
 Generating /tmp/cv-gen/build/pdf/Agent_Smith_CV.pdf file...
@@ -346,7 +347,7 @@ $
 
 # C0ntrib
 
-The pull requests are welcome! :)
+Pull requests are welcome! :)
 
 
 # C0py!N9
