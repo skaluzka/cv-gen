@@ -18,7 +18,7 @@ github / gitlab / bitbucket   --   agentsmith / agentsmith / agentsmith
 ## EDUCA7!0N:
 ```
                       Dates   --   Unknown
-      Title of qulification   --   Top - Secret
+      Title of qulification   --   Top Secret
                     awarded
         Principal subjects/   --   Classified
         occupational skills
@@ -28,7 +28,7 @@ github / gitlab / bitbucket   --   agentsmith / agentsmith / agentsmith
       education && training
 
                       Dates   --   Unknown
-     Title of qualification   --   Top - Secret
+     Title of qualification   --   Top Secret
                     awarded
         Principal subjects/   --   Classified
         occupational skills
