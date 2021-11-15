@@ -1,5 +1,5 @@
 # At first update pip3 (before updating setuptools/easy_install)
-pip==20.1.1
+pip==21.1
 
 # Then update setuptools/easy_install
 setuptools==47.1.1
