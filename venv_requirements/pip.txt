@@ -2,7 +2,7 @@
 pip==20.1.1
 
 # Then update setuptools/easy_install
-setuptools==47.1.1
+setuptools==65.5.1
 
 # At the end install weasyprint package
 weasyprint==51
